@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Two pillars of populism</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e4f2e6;--panel:#f7fcf6;--ink:#21402f;--mute:#4d6b59;--line:#bcd8c3;--s1:#cfe8d5;--s2:#bfdcc6;--gold:#f6a8c6;--goldink:#3d1228;--ok:#1f7a4d;--bad:#b3264f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13251b;--panel:#1b3125;--ink:#eaf6ee;--mute:#a8c5b3;--line:#2e4d3b;--s1:#2a4a37;--s2:#234030;--ok:#6fdc9f;--bad:#ff8fae}}
+:root[data-theme="dark"]{--bg:#13251b;--panel:#1b3125;--ink:#eaf6ee;--mute:#a8c5b3;--line:#2e4d3b;--s1:#2a4a37;--s2:#234030;--ok:#6fdc9f;--bad:#ff8fae}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Source Serif 4",Georgia,serif}
+h1,h2,h3,h4,button{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:26px 16px 60px}
+h1{font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.05;margin:0 0 10px;font-weight:800;letter-spacing:-.02em}
+.lede{color:var(--mute);max-width:40em;margin:0 0 22px}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* temple */
+.temple{max-width:640px;margin:0 auto}
+.ped{height:84px;background:var(--ink);color:var(--bg);clip-path:polygon(50% 0,100% 100%,0 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font:800 1.15rem "Bricolage Grotesque",sans-serif}
+.beam{height:16px;background:var(--ink);margin-top:2px;border-radius:2px}
+.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:10px;padding:0 4%}
+.cols>div{min-width:0}
+.cap{height:14px;background:var(--ink);margin:0 -6px;border-radius:2px}
+.axis{font-size:.82rem;color:var(--mute);text-align:center;margin:6px 0 6px;font-family:"Bricolage Grotesque",sans-serif;min-height:2.4em}
+.seg.span{grid-column:1/-1}
+.seg{border:0;border-bottom:3px solid var(--bg);color:var(--ink);text-align:center;padding:14px 6px;font-size:.92rem;font-weight:700;cursor:pointer;background:repeating-linear-gradient(90deg,var(--s1) 0 12px,var(--s2) 12px 15px);transition:background .2s,transform .15s}
+.seg:hover{transform:scale(1.02)}
+.seg[aria-pressed="true"]{background:var(--gold);color:var(--goldink)}
+.plinth{height:12px;background:var(--ink);margin:0 -8px;border-radius:2px}
+.cname{font:800 1.25rem "Bricolage Grotesque",sans-serif;text-align:center;margin:10px 0 0}
+.foundrow{display:flex;gap:6px;margin-top:10px}.found{display:block;flex:1;border:0;background:var(--ink);color:var(--bg);padding:13px;font-weight:700;font-size:.95rem;border-radius:2px;cursor:pointer}
+.found[aria-pressed="true"]{background:var(--gold);color:var(--goldink)}
+
+/* panel */
+.panel{margin-top:26px;background:var(--panel);border:1.5px solid var(--line);border-radius:6px;padding:24px 26px}
+.crumb{font:600 .9rem "Bricolage Grotesque",sans-serif;color:var(--mute);margin:0 0 4px}
+.panel h2{font-size:1.7rem;margin:0 0 12px;line-height:1.15}
+.panel p{margin:0 0 12px;max-width:42em}
+.panel ul{margin:0 0 12px;padding-left:1.2em;max-width:42em}.panel li{margin-bottom:8px}
+.panel b{font-weight:600}
+.pn{display:flex;justify-content:space-between;margin-top:18px;gap:8px}
+.pn button,.chips button,.tog button{border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:7px 14px;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer}
+.pn button[disabled]{opacity:.3;cursor:default}
+.chips,.tog{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.chips button[aria-pressed="true"],.tog button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+blockquote{margin:0 0 12px;padding:12px 16px;border-left:5px solid var(--gold);background:var(--bg);font-style:italic;max-width:42em}
+.case{border-top:1px solid var(--line);padding:10px 0}
+.case h4{margin:0;font-size:1rem}.case span{font:600 .8rem "Bricolage Grotesque",sans-serif;color:var(--mute)}
+.case p{margin:4px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.two{grid-template-columns:1fr}.panel{padding:18px}.seg{font-size:.8rem;padding:12px 3px}}
+.two>div{background:var(--bg);padding:12px 16px;border-radius:6px}.two h4{margin:0 0 4px}
+.note{color:var(--mute);font-size:.92rem}
+
+.tabs2{display:flex;gap:6px;margin:0 0 16px;border-bottom:2px solid var(--line)}
+.tabs2 button{border:0;background:transparent;color:var(--mute);padding:10px 18px;font:700 1rem "Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;cursor:pointer;border-bottom:4px solid transparent;margin-bottom:-2px}
+.tabs2 button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+.rh{font-size:1.6rem;margin:8px 0 6px}.rsub{color:var(--mute);max-width:42em;margin:0 0 14px}
+.reflist{list-style:none;padding:0;margin:0;max-width:46em}
+.reflist li{padding:12px 0 12px 2em;text-indent:-2em;border-top:1px solid var(--line)}
+.reflist li.empty{text-indent:0;padding-left:0;color:var(--mute)}
+.reflist a{color:var(--ink);font-weight:600;margin-left:.4em}
+/* lab */
+.sub{color:var(--mute);margin:0 0 16px;max-width:42em}
+.lab{display:grid;grid-template-columns:230px 1fr;gap:24px;align-items:start}
+@media(max-width:700px){.lab{grid-template-columns:1fr}}
+.mini{max-width:250px;width:100%;margin:0 auto}
+.mped{height:58px;background:var(--s1);color:var(--mute);clip-path:polygon(50% 0,100% 100%,0 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font:800 .95rem "Bricolage Grotesque",sans-serif;transition:background .3s,color .3s}
+.mped.on{background:var(--gold);color:var(--goldink)}
+.mbeam,.mbase{height:10px;background:var(--s2);margin-top:2px}
+.mcols{display:flex;gap:12px;padding:0 9%}
+.mcol{flex:1;height:130px;background:repeating-linear-gradient(90deg,var(--s1) 0 8px,var(--s2) 8px 10px);color:var(--mute);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.mcol span{font:700 .78rem "Bricolage Grotesque",sans-serif;text-align:center;padding:4px;background:var(--bg);border-radius:4px}
+.mcol.on{background:var(--ink);color:var(--bg)}.mcol.on span{background:var(--ink);color:var(--bg)}
+.sws{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.sw{border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:9px 16px;border-radius:999px;font-weight:700;cursor:pointer}
+.sw[aria-checked="true"]{background:var(--ink);color:var(--bg)}
+.mx{display:grid;grid-template-columns:90px 1fr 1fr;gap:6px;margin-bottom:14px}
+.mx .ax{font:600 .78rem "Bricolage Grotesque",sans-serif;color:var(--mute);display:flex;align-items:center;justify-content:center;text-align:center}
+.cell{border:1.5px solid var(--line);background:var(--panel);color:var(--ink);padding:10px 6px;border-radius:6px;font-weight:700;cursor:pointer;font-size:.85rem}
+.cell{min-height:54px;font-size:1.1rem}
+.cell.act{background:var(--ink);color:var(--bg);border-color:var(--ink)}.cell.act.pop{background:var(--gold);color:var(--goldink);border-color:var(--gold)}
+.res{background:var(--bg);border-radius:6px;padding:14px 18px}.res h3{margin:0 0 4px;font-size:1.25rem}.res p{margin:0 0 8px}.res ul{margin:0 0 8px;padding-left:1.2em}
+.sc{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}.sc .qq{margin-bottom:10px}
+.sc .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sc .row button{border:0;background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+.vid{margin:6px 0 0}.vid a{display:inline-block;font:700 .9rem "Bricolage Grotesque",sans-serif;color:var(--goldink);background:var(--gold);padding:6px 12px;border-radius:6px;text-decoration:none}
+/* editor */
+.edbtn{display:none;position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--gold);color:var(--goldink);border:0;border-radius:999px;padding:11px 18px;font-weight:800;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+body.canedit .edbtn{display:block}
+.ed{position:fixed;left:0;right:0;bottom:0;z-index:25;max-height:58vh;overflow:auto;background:var(--panel);border-top:3px solid var(--gold);padding:12px 16px calc(74px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 20px rgba(0,0,0,.25)}
+.ed[hidden]{display:none}
+body.edopen main{padding-bottom:64vh}
+.edh{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.ed label{display:block;font:600 .85rem "Bricolage Grotesque",sans-serif;color:var(--mute);margin:10px 0 0}
+.ed input,.ed textarea,.ed select{width:100%;font:1rem/1.4 "Source Serif 4",Georgia,serif;padding:8px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;margin-top:3px}
+.edh select{flex:1;min-width:200px;width:auto}
+.erow{border:1px solid var(--line);border-radius:6px;padding:4px 10px 8px;margin-top:8px}
+.ed button.sm[disabled]{opacity:.35;cursor:default}
+.ed button.sm{border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:6px 12px;border-radius:6px;font-weight:700;cursor:pointer;margin:8px 6px 0 0;font-size:.85rem}
+.ed details{margin-top:16px}.ed summary{cursor:pointer;font-weight:700;font-family:"Bricolage Grotesque",sans-serif}
+/* quiz */
+h2.sec{font-size:1.5rem;margin:44px 0 6px}
+.qq{font-size:1.1rem;font-style:italic;padding:14px 16px;background:var(--bg);border-left:5px solid var(--gold);margin:0 0 12px}
+.qo{display:flex;flex-wrap:wrap;gap:8px}
+.qo button{border:1.5px solid var(--line);background:var(--panel);color:var(--ink);padding:10px 14px;border-radius:6px;font-weight:700;cursor:pointer}
+.qo .right{background:var(--ok);border-color:var(--ok);color:#fff}.qo .wrong{border-color:var(--bad);color:var(--bad)}
+.qf{min-height:3.2em;margin:12px 0 0}
+.qn{display:flex;justify-content:space-between;align-items:center}
+.qn button{border:0;background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:6px;font-weight:700;cursor:pointer}.qn button[disabled]{opacity:.3}
+</style>
+</head>
+<body>
+<main>
+<nav class="tabs2" role="tablist" aria-label="Page sections"><button role="tab" id="tb-model" aria-selected="true">Model</button><button role="tab" id="tb-refs" aria-selected="false">References</button></nav>
+<h1>Two key pillars of populism</h1>
+<div id="tab-model">
+<p class="lede">According to author Jan-Werner Müller, populism requires two important facets. For one, it must be anti-elitist in that it pits a "majority" or a "true people" against an "other" or an elite that has been failing them politically. Second, it must be anti-pluralist in that it offers itself as the only solution to any political, economic, or social issues. The us-versus-them idea encompasses both pitting the people against politicians or parties who have failed them but also against any other ideologies that could offer solutions to the issues being faced.</p>
+
+<h2 class="sec" style="margin-top:8px">Why two pillars and not one?</h2>
+<p class="sub">Without both pillars, the ideology essentially collapses, or certainly does not actually constitute populism. Anti-elitism can be present in a wide range of political ideologies or parties, and is often beneficial in creating structural change. Anti-pluralism alone can constitute various forms of political ideology, namely authoritarianism. Offering only one solution to governance or politics doesn't necessitate a true representation of the people.</p>
+<div class="panel">
+ <div class="lab">
+  <div class="mini"><div class="mped" id="mped">Populism</div><div class="mbeam"></div>
+   <div class="mcols"><div class="mcol" id="mc1"><span>Anti-elitism</span></div><div class="mcol" id="mc2"><span>Anti-pluralism</span></div></div><div class="mbase"></div></div>
+  <div>
+   <div class="sws"><button class="sw" id="sw1" role="switch" aria-checked="false"></button><button class="sw" id="sw2" role="switch" aria-checked="false"></button></div>
+   <div class="mx" id="mx"></div>
+   <div class="res" id="res" aria-live="polite"></div>
+  </div>
+ </div>
+ <div class="sc">
+  <p class="qq" id="sct"></p>
+  <div class="row"><button id="scc">Check my switches</button><button id="scn" style="background:transparent;color:var(--ink);border:1.5px solid var(--ink)">Next scenario</button><span id="scf" aria-live="polite"></span></div>
+ </div>
+</div>
+
+<h2 class="sec">Dive into the pillars</h2>
+<div class="temple">
+  <div class="ped">Populism</div><div class="beam"></div>
+  <div class="cols" id="cols"></div>
+  <div class="foundrow" id="foundrow"></div>
+</div>
+
+<div class="panel" id="panel" aria-live="polite"></div>
+
+<h2 class="sec">Which pillar is it?</h2>
+<div class="panel">
+  <p class="qq" id="qt"></p>
+  <div class="qo" id="qo"></div>
+  <p class="qf" id="qf" aria-live="polite"></p>
+  <div class="qn"><span id="qs"></span><button id="qb" disabled>Next</button></div>
+</div>
+</div>
+<div id="tab-refs" hidden>
+ <h2 class="rh" id="refh"></h2>
+ <p class="rsub" id="refintro"></p>
+ <ul class="reflist" id="reflist"></ul>
+</div>
+</main>
+
+<button class="edbtn" id="edbtn">Edit mode</button>
+<section class="ed" id="ed" hidden aria-label="Content editor">
+ <div class="edh"><b>Edit content</b><select id="edsel" aria-label="Choose what to edit"></select></div>
+ <p class="note" style="margin:0">Pick a section, then change the text. The page above updates as you type. Edits are saved in this browser only; use the backup box below to keep or share them.</p>
+ <div id="edbody"></div>
+ <details><summary>Backup, share or reset</summary>
+  <label>Your content as text. Copy it to back it up, or paste saved text here and press Load.<textarea id="edjson" rows="5"></textarea></label>
+  <button class="sm" id="edshow">Show my content as text</button><button class="sm" id="edload">Load from text</button><button class="sm" id="edreset">Reset to original</button>
+ </details>
+ <p class="note" id="edst" aria-live="polite"></p>
+</section>
+
+<script>
+/* ===== DATA: edit or extend here. Each pillar has layers; each layer has a type: text | quotes | cases | debate ===== */
+const D={
+ "elit": {
+  "name": "Anti-elitism",
+  "axis": "Elites are corrupt, self-serving, and out of touch",
+  "layers": [
+   {
+    "t": "Core claim",
+    "type": "text",
+    "h": "\"It is a necessary but not a sufficient condition to be critical of elites in order to qualify as a populist\" (Muller, p.20)",
+    "p": [
+     "Anti-elitism in the context of populism consists of framing a political elite as morally corrupt or inferior to the people, as being unable to represent the people and also in some way out to get them. Ruling parties that are not constituted of the populist party itself can all be grouped into this elite. With this anti-elite framing, it appears that the populist movement is a better representative of the people."
+    ]
+   },
+   {
+    "t": "How it works",
+    "type": "text",
+    "h": "The machinery of anti-elitism",
+    "b": [
+     "<b>Moralising the divide.</b> Differences of power or income are recast as differences of virtue.",
+     "<b>Naming the elite.</b> Targets vary: career politicians, bankers, media, academics, experts, courts, or international bodies.",
+     "<b>The outsider credential.</b> Distance from established institutions is presented as proof of honesty.",
+     "<b>Distrust as default.</b> Mistakes by institutions are read as evidence of bad faith, not error."
+    ],
+    "p": [
+     "Framing the existing political system as an out-of-touch elite that is out to get its people creates an opportunity for populists to become the elite. In other words, \"populists have no problem with representation as long as they are the representatives; similarly, they are fine with elites as long as they are the elites leading the people\" (Müller, p.29). Thus, the anti-elitism present in the ideology of populists is only in relation to those other than themselves, as a tactic to garner support. Anti-elitism serves many other political ideologies besides populism, and is not always negative. In fact, \"political elites can go wrong (unresponsive, self-serving, etc),\" (Mounk, Lecture 3) and thus should be critiqued at times. In the context of populism anti-elitism serves as a tool to frame itself as a \"people's party\" rather than a high-brow, corrupt class of politicians."
+    ]
+   },
+   {
+    "t": "Debates",
+    "type": "debate",
+    "h": "Is anti-elitism healthy or hollow?",
+    "pro": [
+     "Shouldn't it be seen as a positive that people are willing to critique those in power and provide a voice to those who don't feel represented by their government?",
+     "If anti-elitism is a facet of populism, wouldn't that make a huge group of politicians and ideologies populist?"
+    ],
+    "con": [
+     "Anti-elitism can certainly be beneficial and healthy for political systems. That is why anti-elitism itself does not constitute populism, and why it is thus not a sufficient condition for populism. Only coupled with anti-pluralism can anti-elitism signify populism. Thus, politicians who utilize anti-elite discourse in their campaigns or platforms cannot all be seen as populists."
+    ],
+    "note": "While it is interesting to note just how many ideologies can utilize anti-elitism, debates as such indicate why it is so important that there are two pillars to the ideology of populism. Neither can exist without the other, and anti-elitism specifically can actually be healthy in democratic systems in order to check the power of the political elite. "
+   }
+  ]
+ },
+ "plur": {
+  "name": "Anti-pluralism",
+  "axis": "There is only one representative of the true \"people\"",
+  "layers": [
+   {
+    "t": "Core claim",
+    "type": "text",
+    "h": "\"Other political competitors are just part of the immoral, corrupt elite\" (Muller, p.20).",
+    "p": [
+     "The essence of anti-pluralism is that there is no other, or in any case, no better, solution to the issues held by its supporters. While democracy is founded on the idea of pluralism, anti-pluralism offers an alternative. Populist movements may appear in democratic societies, but the idea of anti-pluralism is in itself anti-democratic. Thus, an anti-pluralist ideology would suggest that any political competitors are somehow immoral, corrupt, part of the elite, or otherwise not sufficient to address the needs of the people."
+    ]
+   },
+   {
+    "t": "How it works",
+    "type": "text",
+    "h": "The machinery of anti-pluralism",
+    "b": [
+     "<b>A single will.</b> Public opinion is treated as unified; internal disagreement is minimised.",
+     "<b>Moral monopoly.</b> Representation is claimed exclusively; competitors are 'traitors' or 'enemies'.",
+     "<b>Impatience with checks.</b> Courts, media, regulators and minority protections are framed as obstacles to the people's will.",
+     "<b>Majoritarian logic.</b> Winning an election is treated as a mandate to override constraints."
+    ],
+    "p": [
+     "\"Political opponents are not just wrong but illegitimate\" (Mounk, Lecture 3). While anti-pluralism can be related to autocratic forms of politics, it does not only come up in an undemocratic concentration of power. Anti-pluralism is in many ways a guiding principle in the election of certain movements or at least in the garnering of support of them. \"Pluralism requires consensus on the principle of reciprocal tolerance\" (Medzihorsky and Lindberg, p.422). Thus, anti-pluralism as a pillar of populism necessitates the idea that there shouldn't be tolerance for any other political offering. There is one right way."
+    ]
+   },
+   {
+    "t": "Debates",
+    "type": "debate",
+    "h": "Threat to democracy, or a different view of it?",
+    "pro": [
+     "Can't populism function well within democratic systems?",
+     "If anti-pluralism is undemocratic, how are populist parties being democratically elected, as in many of the cases above?"
+    ],
+    "con": [
+     "The rise of populist parties in democratic societies is not necessarily an indicator that such parties want to function within the democratic norm. It can be argued that populists in their anti-pluralism use their support to then change political systems in their favor, by capturing independent institutions, overrunning checks and balances, appointing loyalists to their cause, etc. It is not a necessary condition that populists come to power via force or in undemocratic ways; using the democratic system to gain power is certainly a possibility. However, populists do claim to be \"more democratic\" in that they are the only true representative of the people, thus reinforcing the anti-pluralist pillar."
+    ],
+    "note": "The debate about anti-pluralism, and specifically its condition in autocratic systems is an important one to have. There is certainly a lot of discussion around whether populists can exist in democratic systems, but there is an underlying theme of most populist movements that they are the only option and that they are superior to competitors."
+   }
+  ]
+ },
+ "base": {
+  "name": "Foundation",
+  "layers": [
+   {
+    "t": "Where they meet",
+    "type": "text",
+    "h": "How the pillars hold each other up",
+    "p": [
+     "Anti-elitism draws a line between the people and those above. Anti-pluralism defines who is on the people's side of the line. Together they form a frame: a pure people, a corrupt elite, and one rightful representative.",
+     "Remove anti-elitism and you have nationalism or majoritarianism. Remove anti-pluralism and you have ordinary reformist politics against powerful interests. The combination is what in many ways, makes populism.",
+     "Neither pillar is enough alone. Unions, reformers and watchdogs can be anti-elitist without being populist, and technocrats or vanguard parties can be anti-pluralist without being populist. See the switches at the top of the page.",
+     "Populist movements can look very different; there are both left and right versions of populism that have existed throughout history. It is especially these two pillars that are evident in all of these forms."
+    ]
+   }
+  ]
+ },
+ "cases": {
+  "name": "Cases",
+  "at": 2,
+  "layers": [
+   {
+    "t": "Cases",
+    "type": "cases",
+    "h": "Cases demonstrating the pillars",
+    "items": [
+     {
+      "w": "Brexit Campaigns, 2016",
+      "n": "Advertisements as well as other pro-Brexit discourses and interviews utilized anti-elitist tactics to frame the EU as an institution that is corrupt and does not have the British people's interest at heart. ",
+      "v": "https://www.youtube.com/watch?v=GGgiGtJk7MA",
+      "p": ""
+     },
+     {
+      "w": "Podemos, Spain",
+      "n": "Characterized the political elite as the \"maldita casta\" and the supporters as the \"bendita gente\" framing them as good vs. evil and also showing the failures of other parties to meet the desires of the people. Framing shows mostly the anti-elitism but the advertisement itself uses both tactics.",
+      "p": "",
+      "v": "https://www.youtube.com/watch?v=H9TzgU4btgs"
+     },
+     {
+      "w": "Donald Trump, Rally in Claremont, NH 2023",
+      "n": "Described political opponents as \"vermin\" and emphasized the need to \"root them out\" of the government, implying that his campaign was superior. This can be seen as demonstrating both pillars.",
+      "v": "https://www.c-span.org/clip/public-affairs-event/user-clip-trump-calling-opponents-vermin/5093508",
+      "p": ""
+     },
+     {
+      "w": "Erdoğan, Turkey",
+      "n": "Invoked 'national will' as grounds for strong executive authority, while slandering opponents, indicating their unfitness to hold power.",
+      "p": "",
+      "v": "https://www.pbs.org/video/turkey-votes-1683927376/"
+     },
+     {
+      "w": "Marine Le Pen, France",
+      "n": "Invokes the idea of being a unique representation of \"the people\" in her campaign slogan, \"au nom du peuple.\"",
+      "p": ""
+     },
+     {
+      "w": "Viktor Orbán, Hungary",
+      "n": "Invoked the concept of \"illiberal democracy\" in his campaigns, focusing on a greater national will and placing civil society groups, the European Union, and the current political systems as enemies to that will.",
+      "p": "",
+      "v": "https://www.americanrhetoric.com/speeches/viktororbanilliberaldemocracyspeech.htm"
+     },
+     {
+      "w": "Narendra Modi, India",
+      "n": "Creates an \"us vs. them\" story invoking cultural differences to classify the people, applying the \"anti-elitist\" principles",
+      "p": "",
+      "v": "https://www.youtube.com/watch?v=jZKa4OVSKQ8&t=111s"
+     }
+    ]
+   }
+  ]
+ },
+ "refs": {
+  "title": "References",
+  "intro": "Sources used for research in this model.",
+  "items": [
+   {
+    "c": "Al Jazeera English (2024) <i>India elections: Modi seeks third term with populist appeals</i> [Online video]. Available at: https://www.youtube.com/watch?v=jZKa4OVSKQ8&t=111s (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Ayed, N. and Jenzer, S. (2019) ‘How Modi’s populist message won the Indian PM a second term’, <i>CBC News</i>, 23 May. Available at: https://www.cbc.ca/news/world/india-modi-election-bjp-1.5142961 (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "C-SPAN (2023) <i>User clip: Trump calling opponents ‘vermin’</i> [Video of campaign speech by Donald Trump, Claremont, New Hampshire, 11 November 2023]. Available at: https://www.c-span.org/clip/public-affairs-event/user-clip-trump-calling-opponents-vermin/5093508 (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Gross, E. (2016) ‘Marine Le Pen change de slogan : une ligne populiste assumée’, <i>L’Obs</i>, 19 September. Available at: https://www.nouvelobs.com/politique/election-presidentielle-2017/20160919.OBS8333/marine-le-pen-change-de-slogan-une-ligne-populiste-assumee.html (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Llobell González-Gallarza, M. (2025) ‘What is populism? The case of Podemos in Spain’, <i>The Yale Review of International Studies</i>, 4 November. Available at: https://yris.yira.org/column/what-is-populism-the-case-of-podemos-in-spain/ (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Mackey, R. (2016) <i>Gove: Britons “Have Had Enough of Experts”</i> [Online video]. Available at: https://www.youtube.com/watch?v=GGgiGtJk7MA (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "McKernan, B. (2019) ‘From reformer to “new sultan”: Erdoğan’s populist evolution’, <i>The Guardian</i>, 11 March. Available at: https://www.theguardian.com/world/2019/mar/11/from-reformer-to-new-sultan-erdogans-populist-evolution (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Medzihorsky, J. and Lindberg, S.I. (2024) ‘Walking the Talk: How to Identify Anti-Pluralist Parties’, <i>Party Politics</i>, 30(3), pp. 420–434. Available at: https://doi.org/10.1177/13540688231153092 (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Mounk, Y. (2026) ‘Lecture 3: The Populist Challenge to Democracy’, lecture delivered at <i>Sciences Po</i>, 21 September.",
+    "u": ""
+   },
+   {
+    "c": "Müller, J.-W. (2016) <i>What is populism?</i> Philadelphia: University of Pennsylvania Press.",
+    "u": ""
+   },
+   {
+    "c": "Orbán, V. (2014) ‘Address on illiberal democracy’, speech delivered at Bálványos Free Summer University and Youth Camp, Băile Tușnad, Romania, 26 July. <i>American Rhetoric</i>. English translation (DeepL) of the Hungarian original. Available at: https://www.americanrhetoric.com/speeches/viktororbanilliberaldemocracyspeech.htm (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Podemos (2015) <i>Maldita casta, bendita gente</i> [Online video]. Available at: https://www.youtube.com/watch?v=H9TzgU4btgs (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Schifrin, N. (2023) ‘Turkey prepares for election as Erdogan tries to hold power’, <i>PBS NewsHour</i>, 12 May. Video. Available at: https://www.pbs.org/video/turkey-votes-1683927376/ (Accessed: 21 October 2026).",
+    "u": ""
+   },
+   {
+    "c": "Willsher, K. (2017) ‘The family name and party logo have gone but can Marine Le Pen detoxify her brand?’, <i>The Guardian</i>, 7 January. Available at: https://www.theguardian.com/world/2017/jan/07/marine-le-pen-front-national-revamp-french-presidential-election (Accessed: 21 October 2026).",
+    "u": ""
+   }
+  ]
+ }
+};
+const PT={E:"Anti-elitism",P:"Anti-pluralism",B:"Both pillars"};
+const CA=()=>D.cases&&D.cases.at!=null?D.cases.at:2;
+function seq(k){const a=D[k].layers.map((_,i)=>({p:k,l:i}));a.splice(Math.min(CA(),a.length),0,{p:"cases",l:0});return a}
+function rows(){const n=Math.max(D.elit.layers.length,D.plur.layers.length),r=[];for(let i=0;i<n;i++)r.push({k:"pair",i});r.splice(Math.min(CA(),r.length),0,{k:"cases"});return r}
+function vurl(u){u=(u||"").trim();if(!u)return"";if(!/^https?:\/\//i.test(u))u="https://"+u;return /["<>\s]/.test(u)?"":u}
+function vhost(u){try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return""}}
+const $=id=>document.getElementById(id);
+let S={p:"elit",l:0,side:"L",f:"all",from:"elit"};
+
+function build(){
+ const K=["elit","plur"];
+ let h=K.map(k=>`<div><div class="cap"></div><div class="axis">${D[k].axis}</div></div>`).join("");
+ rows().forEach(r=>{
+  if(r.k==="cases")h+=`<button class="seg span" data-p="cases" data-l="0" aria-pressed="false">${D.cases.layers[0].t}</button>`;
+  else h+=K.map(k=>{const L=D[k].layers[r.i];return L?`<button class="seg" data-p="${k}" data-l="${r.i}" aria-pressed="false">${L.t}</button>`:"<span></span>"}).join("");
+ });
+ h+=K.map(k=>`<div><div class="plinth"></div><p class="cname">${D[k].name}</p></div>`).join("");
+ $("cols").innerHTML=h;
+ document.querySelectorAll(".seg").forEach(b=>b.onclick=()=>{S.p=b.dataset.p;S.l=+b.dataset.l;render()});
+ $("foundrow").innerHTML=D.base.layers.map((l,i)=>`<button class="found" data-i="${i}" aria-pressed="false">Foundation › ${l.t}</button>`).join("");
+ $("foundrow").querySelectorAll("button").forEach(x=>x.onclick=()=>{S.p="base";S.l=+x.dataset.i;render()});
+}
+function render(){
+ document.querySelectorAll(".seg").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===S.p&&+b.dataset.l===S.l));
+ $("foundrow").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",S.p==="base"&&+x.dataset.i===S.l));
+ const P=D[S.p],L=P.layers[S.l];let h=`<p class="crumb">${S.p==="cases"?"Both pillars":P.name+" / "+L.t}</p><h2>${L.h}</h2>`;
+ if(L.type==="text"){(L.p||[]).forEach(x=>h+=`<p>${x}</p>`);if(L.b)h+="<ul>"+L.b.map(x=>`<li>${x}</li>`).join("")+"</ul>";}
+ if(L.type==="quotes"){h+=`<div class="tog"><button data-s="L" aria-pressed="${S.side==="L"}">Left version</button><button data-s="R" aria-pressed="${S.side==="R"}">Right version</button></div><blockquote>${L[S.side]}</blockquote>`;L.p.forEach(x=>h+=`<p>${x}</p>`);}
+ if(L.type==="cases"){
+  L.items.forEach(c=>{const u=vurl(c.v),hn=vhost(u);h+=`<div class="case"><h4>${c.w}</h4>${PT[c.p]?`<span>${PT[c.p]}</span>`:""}<p>${c.n}</p>${u?`<p class="vid"><a href="${u}" target="_blank" rel="noopener noreferrer">▶ Watch video${hn?" ("+hn+")":""}</a></p>`:""}</div>`});
+  h+=`<p class="note">Cases are simplified summaries and reflect contested interpretations. Critics and supporters of each figure often disagree.</p>`;}
+ if(L.type==="debate"){h+=`<div class="two"><div><h4>Questions</h4><ul>${L.pro.map(x=>`<li>${x}</li>`).join("")}</ul></div><div><h4>Responses</h4><ul>${L.con.map(x=>`<li>${x}</li>`).join("")}</ul></div></div><p style="margin-top:12px">${L.note}</p>`;}
+ let sq=[],ix=-1;
+ if(S.p!=="base"){if(S.p!=="cases")S.from=S.p;sq=seq(S.from||"elit");ix=sq.findIndex(x=>x.p===S.p&&x.l===S.l);h+=`<div class="pn"><button id="pv" ${ix<=0?"disabled":""}>Previous layer</button><button id="nx" ${ix>=sq.length-1?"disabled":""}>Next layer</button></div>`;}
+ $("panel").innerHTML=h;
+ $("panel").querySelectorAll(".tog button").forEach(b=>b.onclick=()=>{S.side=b.dataset.s;render()});
+ $("panel").querySelectorAll(".chips button").forEach(b=>b.onclick=()=>{S.f=b.dataset.f;render()});
+ const gt=d=>{const t=sq[ix+d];if(t){S.p=t.p;S.l=t.l;render()}};if($("pv"))$("pv").onclick=()=>gt(-1);if($("nx"))$("nx").onclick=()=>gt(1);
+}
+build();render();
+
+/* quiz */
+const O=[["E","Anti-elitism"],["P","Anti-pluralism"],["B","Both"],["N","Neither"]];
+const Q=[
+ {
+  "t": "\"We pledge to you, that we will root out the communists, Marxists, fascists, and the radical left thugs that live like vermin within the confines of our country, that lie and steal and cheat on elections, that will do anything possible…whether legally or illegally to destroy America and to destroy the American dream. The real threat is not from the radical right. The real threat is from the radical left, and it’s growing every day.” (Trump, 2023)",
+  "a": "B",
+  "e": "Both: not only frames the opposition as horrible enemies and creates an \"us vs. them\" narrative, but promises to remove them as a threat"
+ },
+ {
+  "t": "“I’m asking the British public to take back control of our destiny from those organizations which are distant, unaccountable,  elitist…The people who are backing the ‘Remain’ campaign are people who’ve done very well, thank you, out of the European Union, and the people who are arguing that we should get out are concerned to ensure that the working people of this country at last get a fair deal.” (Gove, 2016)",
+  "a": "E",
+  "e": "Anti-elitism: frames the issue of one that separates the working class and the larger \"people\" from the elitist, out of touch European institutions"
+ },
+ {
+  "t": "\"It is therefore very important that, if we want to reorganize our nation state instead of the liberal state, we must make it clear that we are not dealing with civilians here, that we are not dealing with civilians, but with paid political activists who are trying to assert foreign interests in Hungary. It is therefore very appropriate that a committee has been set up in the Hungarian Parliament to monitor, record and disclose the ongoing acquisition of foreign influence, so that all of you, including yourselves, can know exactly who the real characters are behind the masks\" (Orbán, 2014).",
+  "a": "P",
+  "e": "Anti-pluralism: Pledges to set up mechanisms to maintain one political ideology or \"national will,\" challenging opponents (in this case civil society)."
+ }
+];
+let qi=0,sc=0,dn=false;
+function q(){const x=Q[qi];dn=false;$("qt").textContent=x.t;$("qf").textContent="";$("qb").disabled=true;$("qb").textContent=qi===Q.length-1?"See score":"Next";$("qs").textContent=`Question ${qi+1} of ${Q.length}`;
+ $("qo").innerHTML=O.map(([k,n])=>`<button data-k="${k}">${n}</button>`).join("");
+ $("qo").querySelectorAll("button").forEach(b=>b.onclick=()=>{if(dn)return;dn=true;const ok=b.dataset.k===x.a;if(ok)sc++;b.classList.add(ok?"right":"wrong");if(!ok)$("qo").querySelector(`[data-k="${x.a}"]`).classList.add("right");$("qf").textContent=(ok?"Correct. ":"Not quite. ")+x.e;$("qb").disabled=false;});}
+$("qb").onclick=()=>{const t=$("qb").textContent;
+ if(t==="See score"){$("qt").textContent=`You got ${sc} of ${Q.length}.`;$("qo").innerHTML="";$("qf").textContent="Real speech often blends the pillars. Try applying the test to a speech you know.";$("qb").textContent="Restart";$("qs").textContent="";return;}
+ if(t==="Restart"){qi=0;sc=0;q();return;}
+ qi++;q();};
+q();
+
+/* lab: the two switches. Edit QD and SC to add your own data */
+const QD={
+ "10": {
+  "n": "Anti-elitist but pluralist",
+  "d": "Critiques or challenges to those in power, but without claiming there is only one alternative. ",
+  "ex": [
+   "Trade unions bargaining against employers",
+   "Progressive-era anti-trust and anti-corruption reformers",
+   "Political candidates that platform on the corruption of an elite"
+  ],
+  "why": "The target is specific abuses of power, not a morally corrupt class. Anti-elitism itself challenges the corruption in a political or economic elite but without attacking opponents and claiming a singular solution or representative of the people."
+ },
+ "11": {
+  "n": "Populism",
+  "d": "A corrupt elite above, and one authentic people below, represented by one voice.",
+  "ex": [
+   "Left versions: usually targeting economic issues",
+   "Right versions: usually targeting cultural issues"
+  ],
+  "why": "Anti-elitism supplies the villain. Anti-pluralism supplies the claim to exclusive legitimacy. "
+ },
+ "00": {
+  "n": "Pluralist and not populist",
+  "d": "Places all parties/opponents on a relatively equal standing ground. ",
+  "ex": [
+   "Most mainstream liberal and democratic parties"
+  ],
+  "why": "No targeting of those in power and also no claims that there should be one primary representative."
+ },
+ "01": {
+  "n": "Anti-pluralist but not anti-elitist",
+  "d": "There is only one correct ruler, but might depend on an elite to hold power. ",
+  "ex": [
+   "Absolute monarchy",
+   "Authoritarianism and dictatorships",
+   "Technocracy? (only experts should/are able to handle governance)"
+  ],
+  "why": "Anti-pluralism may very well depend on and uphold a political elite, without claiming otherwise. It is more about who should be in that elite, rather than critiquing it as a whole. "
+ }
+};
+const SC=[
+ {
+  "t": "A trade union campaigns against executive pay, then negotiates with management and accepts court rulings.",
+  "a": "10"
+ },
+ {
+  "t": "A government says experts have found the single correct policy, so opposition parties only delay progress.",
+  "a": "01"
+ },
+ {
+  "t": "A movement says a corrupt establishment betrayed the real people, and that only its leader speaks for them.",
+  "a": "11"
+ },
+ {
+  "t": "Centre-left and centre-right parties bargain over a budget and accept electoral defeat.",
+  "a": "00"
+ }
+];
+let E=false,Pl=false,si=0;
+function lab(){
+ const k=(E?"1":"0")+(Pl?"1":"0"),r=QD[k];
+ $("sw1").setAttribute("aria-checked",E);$("sw1").textContent="Anti-elitist: "+(E?"on":"off");
+ $("sw2").setAttribute("aria-checked",Pl);$("sw2").textContent="Anti-pluralist: "+(Pl?"on":"off");
+ $("mc1").classList.toggle("on",E);$("mc2").classList.toggle("on",Pl);$("mped").classList.toggle("on",E&&Pl);
+ const c=(e,p,n)=>`<button class="cell ${e===E&&p===Pl?"act":""} ${e&&p&&e===E&&p===Pl?"pop":""}" data-e="${+e}" data-p="${+p}" aria-label="${n}">${e===E&&p===Pl?"●":""}</button>`;
+ $("mx").innerHTML=`<span></span><span class="ax">Pluralist</span><span class="ax">Anti-pluralist</span><span class="ax">Anti-elitist</span>${c(true,false,"Anti-elitist and pluralist")}${c(true,true,"Anti-elitist and anti-pluralist")}<span class="ax">Not anti-elitist</span>${c(false,false,"Not anti-elitist and pluralist")}${c(false,true,"Not anti-elitist and anti-pluralist")}`;
+ $("mx").querySelectorAll(".cell").forEach(b=>b.onclick=()=>{E=b.dataset.e==="1";Pl=b.dataset.p==="1";lab()});
+ $("res").innerHTML=`<h3>${r.n}</h3><p>${r.d}</p><ul>${r.ex.map(x=>`<li>${x}</li>`).join("")}</ul><p><b>${k==="11"?"Why this is populism: ":"Why this isn't populism: "}</b>${r.why}</p><p class="note">Classifications are debated, and real movements can sit between boxes or shift over time.</p>`;
+}
+$("sw1").onclick=()=>{E=!E;lab()};$("sw2").onclick=()=>{Pl=!Pl;lab()};
+function showSc(){$("sct").textContent=SC[si].t;$("scf").textContent=""}
+$("scc").onclick=()=>{const a=SC[si].a,k=(E?"1":"0")+(Pl?"1":"0");$("scf").textContent=k===a?"Correct: "+QD[a].n+".":"Not quite. This one is: "+QD[a].n+"."};
+$("scn").onclick=()=>{si=(si+1)%SC.length;showSc()};
+lab();showSc();
+
+/* ===== in-page editor ===== */
+const pgEls=()=>{const h=document.querySelectorAll("h2.sec");return{title:document.querySelector("h1"),lede:document.querySelector(".lede"),h1:h[0],sub:document.querySelector(".sub"),h2:h[1],h3:h[2]}};
+const PG={};{const e=pgEls();for(const k in e)PG[k]=e[k].textContent}
+const applyPG=()=>{const e=pgEls();for(const k in PG)e[k].textContent=PG[k]};
+const KEY="populism-edits-v1",DEF=JSON.stringify({D,QD,SC,Q,PG});
+const AN=[["E","Anti-elitism"],["P","Anti-pluralism"],["B","Both"],["N","Neither"]];
+const AS=[["10","Anti-elitist only"],["01","Anti-pluralist only"],["11","Both (populism)"],["00","Neither"]];
+const SD=[["left","Left"],["right","Right"],["hist","Historical"]];
+const PO=[["","None"],["E","Anti-elitism"],["P","Anti-pluralism"],["B","Both pillars"]];
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const say=m=>$("edst").textContent=m;
+function migrate(){
+ const items=[],add=(it,p)=>{const f=items.find(x=>x.w===it.w);if(f){if(f.p&&f.p!==p)f.p="B";if(!f.v&&it.v)f.v=it.v}else items.push({...it,p:it.p||p})};
+ for(const k of ["elit","plur","base"])D[k].layers=D[k].layers.filter(l=>{if(l.type==="cases"){(l.items||[]).forEach(it=>add(it,k==="elit"?"E":k==="plur"?"P":"B"));return false}return true});
+ if(!D.cases)D.cases={name:"Cases",at:2,layers:[{t:"Cases",type:"cases",h:"Cases across both pillars",items}]};
+}
+function applyData(o){
+ if(o.D){for(const k of ["elit","plur","base","cases","refs"])if(o.D[k]){D[k]=o.D[k];if(D[k].layers)D[k].layers=D[k].layers.filter(l=>l.type!=="quotes")}
+  if(!o.D.cases)D.cases=null;migrate()}
+ if(o.QD)for(const k in QD)if(o.QD[k])QD[k]=o.QD[k];
+ if(o.PG){Object.assign(PG,o.PG);applyPG()}
+ if(Array.isArray(o.SC)&&o.SC.length)SC.splice(0,SC.length,...o.SC);
+ if(Array.isArray(o.Q)&&o.Q.length)Q.splice(0,Q.length,...o.Q);
+}
+function store(){try{localStorage.setItem(KEY,JSON.stringify({D,QD,SC,Q,PG}));return true}catch(e){return false}}
+function drawRefs(){const R=D.refs||{title:"References",intro:"",items:[]};$("refh").textContent=R.title||"";$("refintro").textContent=R.intro||"";
+ $("reflist").innerHTML=(R.items||[]).length?R.items.map(r=>{const u=vurl(r.u);return `<li>${r.c||""}${u?`<a href="${u}" target="_blank" rel="noopener noreferrer">Link</a>`:""}</li>`}).join(""):`<li class="empty">No references added yet.</li>`}
+function tab(t){const m=t==="model";$("tab-model").hidden=!m;$("tab-refs").hidden=m;$("tb-model").setAttribute("aria-selected",m);$("tb-refs").setAttribute("aria-selected",!m);try{window.scrollTo(0,0)}catch(e){}}
+$("tb-model").onclick=()=>tab("model");$("tb-refs").onclick=()=>tab("refs");
+function redraw(){si=0;qi=0;sc=0;applyPG();drawRefs();build();render();lab();showSc();q()}
+function targets(){
+ const T=[];
+ T.push({n:"Page title, headings and intro text",f:[{l:"Page title",o:PG,k:"title",kind:"text"},{l:"Intro paragraph under the title",o:PG,k:"lede",kind:"area"},{l:"Heading: the two-switches section",o:PG,k:"h1",kind:"text"},{l:"Intro under that heading",o:PG,k:"sub",kind:"area"},{l:"Heading: the pillar explorer",o:PG,k:"h2",kind:"text"},{l:"Heading: the quiz",o:PG,k:"h3",kind:"text"}],r:applyPG});
+ for(const k of ["elit","plur"])D[k].layers.forEach((L,i)=>{
+  const f=[{l:"Block label (on the column)",o:L,k:"t",kind:"text"},{l:"Heading",o:L,k:"h",kind:"text"}];
+  if(L.type==="text")f.push({l:"Paragraphs (one per line)",o:L,k:"p",kind:"lines"},{l:"Bullet points (one per line; leave empty for none). You can use <b>bold</b> tags.",o:L,k:"b",kind:"lines",opt:1});
+  if(L.type==="quotes")f.push({l:"Left-wing example quote",o:L,k:"L",kind:"text"},{l:"Right-wing example quote",o:L,k:"R",kind:"text"},{l:"Paragraphs (one per line)",o:L,k:"p",kind:"lines"});
+  if(L.type==="cases")f.push({l:"Cases",o:L,k:"items",kind:"rows",cols:[["w","Name","t"],["n","Description","t"],["v","Video link (optional, paste a web address)","t"]],blank:{w:"",n:"",v:""}});
+  if(L.type==="debate")f.push({l:"Questions (one per line)",o:L,k:"pro",kind:"lines"},{l:"Responses (one per line)",o:L,k:"con",kind:"lines"},{l:"Closing note",o:L,k:"note",kind:"area"});
+  T.push({n:D[k].name+" › "+L.t,f,go:()=>{S.p=k;S.l=i;render()},r:()=>{build();render()}});
+ });
+ const B=D.base.layers[0];
+ T.push({n:"Foundation: where the pillars meet",f:[{l:"Heading",o:B,k:"h",kind:"text"},{l:"Paragraphs (one per line)",o:B,k:"p",kind:"lines"}],go:()=>{S.p="base";S.l=0;render()},r:render});
+ if(D.cases){const C=D.cases.layers[0];T.push({n:"Cases (shared by both pillars)",f:[{l:"Block label (on the temple)",o:C,k:"t",kind:"text"},{l:"Heading",o:C,k:"h",kind:"text"},{l:"Cases",o:C,k:"items",kind:"rows",cols:[["w","Name","t"],["n","Description","t"],["p","Pillar it illustrates (optional)","s",PO],["v","Video link (optional, paste a web address)","t"]],blank:{w:"",n:"",p:"",v:""}}],go:()=>{S.p="cases";S.l=0;render()},r:()=>{build();render()}});}
+ T.push({n:"References tab",tab:"refs",f:[{l:"Heading",o:D.refs,k:"title",kind:"text"},{l:"Intro line (optional)",o:D.refs,k:"intro",kind:"area"},{l:"References (you can use <i>italics</i> tags)",o:D.refs,k:"items",kind:"rows",cols:[["c","Reference","t"],["u","Link (optional, paste a web address)","t"]],blank:{c:"",u:""}}],r:drawRefs});
+ T.push({n:"Pillar names and taglines",f:[{l:"Anti-elitism: name",o:D.elit,k:"name",kind:"text"},{l:"Anti-elitism: tagline",o:D.elit,k:"axis",kind:"text"},{l:"Anti-pluralism: name",o:D.plur,k:"name",kind:"text"},{l:"Anti-pluralism: tagline",o:D.plur,k:"axis",kind:"text"}],r:()=>{build();render()}});
+ for(const k of ["10","01","11","00"]){const o=QD[k];
+  T.push({n:"Switches › "+o.n,f:[{l:"Title",o,k:"n",kind:"text"},{l:"Short description",o,k:"d",kind:"area"},{l:"Examples (one per line)",o,k:"ex",kind:"lines"},{l:k==="11"?"Why this is populism":"Why this isn't populism",o,k:"why",kind:"area"}],go:()=>{E=k[0]==="1";Pl=k[1]==="1";lab()},r:lab});}
+ T.push({n:"Switch exercise scenarios",f:[{l:"Scenarios",o:{x:SC},k:"x",kind:"rows",min:1,cols:[["t","Scenario","t"],["a","Correct answer","s",AS]],blank:{t:"",a:"11"}}],r:showSc});
+ T.push({n:"Quiz questions",f:[{l:"Questions",o:{x:Q},k:"x",kind:"rows",min:1,cols:[["t","Statement","t"],["a","Correct answer","s",AN],["e","Explanation shown after answering","t"]],blank:{t:"",a:"E",e:""}}],r:()=>{qi=0;sc=0;q()}});
+ return T;
+}
+function fhtml(F,i){const v=F.o[F.k];
+ if(F.kind==="text")return `<label>${F.l}<input data-f="${i}" value="${esc(v)}"></label>`;
+ if(F.kind==="area")return `<label>${F.l}<textarea rows="3" data-f="${i}">${esc(v)}</textarea></label>`;
+ if(F.kind==="lines")return `<label>${F.l}<textarea rows="4" data-f="${i}">${esc((v||[]).join("\n"))}</textarea></label>`;
+ return `<label>${F.l}</label>`+(v||[]).map((row,j)=>`<div class="erow">${F.cols.map(([c,n,ty,op])=>`<label>${n}${ty==="s"?`<select data-f="${i}" data-r="${j}" data-c="${c}">${op.map(([a,b])=>`<option value="${a}"${row[c]===a?" selected":""}>${b}</option>`).join("")}</select>`:`<textarea rows="2" data-f="${i}" data-r="${j}" data-c="${c}">${esc(row[c])}</textarea>`}</label>`).join("")}<button class="sm" data-up="${i},${j}"${j===0?" disabled":""}>Move up</button><button class="sm" data-down="${i},${j}"${j===v.length-1?" disabled":""}>Move down</button><button class="sm" data-del="${i},${j}">Remove this row</button></div>`).join("")+`<button class="sm" data-add="${i}">Add another</button>`;
+}
+let T=[],cur=null;
+function fillSel(k){T=targets();$("edsel").innerHTML=T.map((t,i)=>`<option value="${i}">${esc(t.n)}</option>`).join("");if(k!=null)$("edsel").value=k}
+function showT(go){cur=T[+$("edsel").value];if(go){tab(cur.tab||"model");if(cur.go)cur.go()}$("edbody").innerHTML=cur.f.map(fhtml).join("")}
+function persist(){const ok=store();if(cur&&cur.r)cur.r();say(ok?"Saved in this browser.":"Applied to the page, but this browser would not save it. Use the backup box to keep your content.")}
+$("edsel").onchange=()=>showT(true);
+$("edbody").addEventListener("input",e=>{const t=e.target,fi=t.dataset.f;if(fi==null)return;const F=cur.f[+fi];
+ if(t.dataset.r!=null)F.o[F.k][+t.dataset.r][t.dataset.c]=t.value;
+ else if(F.kind==="lines"){const a=t.value.split("\n").map(s=>s.trim()).filter(Boolean);F.o[F.k]=(a.length||!F.opt)?a:undefined}
+ else F.o[F.k]=t.value;
+ persist()});
+$("edbody").addEventListener("change",()=>{const k=$("edsel").value;fillSel(k)});
+$("edbody").onclick=e=>{const b=e.target.closest("button");if(!b)return;
+ if(b.dataset.add!=null){const F=cur.f[+b.dataset.add];F.o[F.k].push({...F.blank});persist();showT()}
+ if(b.dataset.up!=null||b.dataset.down!=null){const d=b.dataset.up!=null?-1:1,[i,j]=(b.dataset.up||b.dataset.down).split(",").map(Number),F=cur.f[i],a=F.o[F.k];if(a[j+d]){[a[j],a[j+d]]=[a[j+d],a[j]];persist();showT()}}
+ if(b.dataset.del!=null){const[i,j]=b.dataset.del.split(",").map(Number),F=cur.f[i],a=F.o[F.k];if(a.length>(F.min||0)){a.splice(j,1);persist();showT()}else say("At least one row must stay.")}};
+$("edbtn").onclick=()=>{const open=$("ed").hidden;$("ed").hidden=!open;document.body.classList.toggle("edopen",open);$("edbtn").textContent=open?"Close editor":"Edit mode";if(open){fillSel(0);showT(true)}};
+$("edshow").onclick=()=>{const j=$("edjson");j.value=JSON.stringify({D,QD,SC,Q,PG},null,1);j.select();try{navigator.clipboard.writeText(j.value)}catch(e){}say("Your content is shown above. Copy it to back it up, or send it to Claude to make it permanent in the shared version.")};
+$("edload").onclick=()=>{try{const o=JSON.parse($("edjson").value);if(!(o.D&&o.D.elit&&Array.isArray(o.D.elit.layers)&&o.D.plur&&o.D.base))throw 0;applyData(o);store();redraw();fillSel(0);showT(true);say("Content loaded.")}catch(e){say("That text isn't valid saved content.")}};
+$("edreset").onclick=function(){if(this.dataset.c!=="1"){this.dataset.c="1";this.textContent="Click again to confirm reset";return}
+ this.dataset.c="";this.textContent="Reset to original";applyData(JSON.parse(DEF));try{localStorage.removeItem(KEY)}catch(e){}redraw();fillSel(0);showT(true);say("Reset to the original content.")};
+try{const s=localStorage.getItem(KEY);if(s){applyData(JSON.parse(s));redraw()}}catch(e){}
+drawRefs();if(location.hash==="#references")tab("refs");
+/* the Edit mode button stays hidden for ordinary viewers: open the link ending in #edit (or press Ctrl+Shift+E) to show it */
+try{const chk=()=>document.body.classList.toggle("canedit",location.hash==="#edit");chk();window.addEventListener("hashchange",chk);
+ document.addEventListener("keydown",e=>{if(e.ctrlKey&&e.shiftKey&&(e.key==="E"||e.key==="e")){e.preventDefault();document.body.classList.toggle("canedit")}})}catch(e){}
+</script>
+</body>
+</html>
